@@ -8,6 +8,7 @@ class WorldGPS {
 
     public function __construct($db, $catName) {
         $this->db = $db;
+        //category
         $this->cat = $catName;
     }
 
