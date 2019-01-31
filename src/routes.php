@@ -23,11 +23,13 @@ $app->get('/route[/{category}]', function (Request $request, Response $response,
 
     $category = new INDIECAMPER\Categories($this->db);
 
+    //check if exist category and if category exist in database
     $catName = (isset($args["category"]) ? $args["category"] : NULL);
     $catResult = ($catName != NULL ? $category->issetCategory($catName) : 1);
 
     $inputs = array("points");
     $isRequestOK = checkEssentialInputs($request->getParams(), $inputs);
+    //if something is missing send a error bad request
     if (!$isRequestOK || !$catResult) {
         $newResponse = $response->withStatus(400);
         return $newResponse;
@@ -36,13 +38,13 @@ $app->get('/route[/{category}]', function (Request $request, Response $response,
     $gps = new INDIECAMPER\WorldGPS($this->db, $catName);
     $route = new INDIECAMPER\Route($gps);
 
-
     $points = $request->getParam("points");
     $points = explode(";", $points);
     if (count($points) < 2) {
         $newResponse = $response->withStatus(400);
         return $newResponse;
     }
+    //create route
     $routePlaces = $route->createRoute($points);
 
     $newResponse = $response->withJson($routePlaces, 200, JSON_PRETTY_PRINT);

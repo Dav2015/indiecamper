@@ -8,6 +8,7 @@ class Categories {
         $this->db = $db;
     }
 
+    //check if a category exist in the database
     function issetCategory($name) {
         $query = Query::isCategory($name);
         $result = $this->db->query($query)->fetch();
