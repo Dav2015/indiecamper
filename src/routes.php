@@ -44,6 +44,7 @@ $app->get('/route[/{category}]', function (Request $request, Response $response,
         $newResponse = $response->withStatus(400);
         return $newResponse;
     }
+    
     //create route
     $routePlaces = $route->createRoute($points);
 
