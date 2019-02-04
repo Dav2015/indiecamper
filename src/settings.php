@@ -18,7 +18,7 @@ return [
         
         // Database connection settings
         "db" => [
-            "host" => "localhost",
+            "host" => "localhost:49913",
             "dbname" => "indiedb",
             "user" => "root",
             "pass" => ""
