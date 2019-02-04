@@ -20,7 +20,7 @@ return [
         "db" => [
             "host" => "localhost:49913",
             "dbname" => "indiedb",
-            "user" => "azure",
+            "user" => "root",
             "pass" => ""
         ],
     ],
